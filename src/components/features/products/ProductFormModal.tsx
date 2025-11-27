@@ -390,7 +390,7 @@ const ProductFormModal: React.FC<ProductFormModalProps> = ({
             )}
           </div>
 
-          <AdvancedOptions className="grid grid-cols-3 [&>*:nth-child(1)]:col-span-2 [&>*:nth-child(6)]:col-span-3 gap-4">
+          <AdvancedOptions className="grid grid-cols-3 [&>*:nth-child(1)]:col-span-2 [&>*:nth-child(7)]:col-span-3 gap-4">
             <Input
               label={t("product.costPrice", "Cost Price")}
               name="costPrice"
@@ -406,6 +406,14 @@ const ProductFormModal: React.FC<ProductFormModalProps> = ({
               type="number"
               step="1"
               value={formData.stockQuantity ?? ""}
+              onChange={handleChange}
+            />
+            <Input
+              label={t("product.minimumStock", "Minimum Stock")}
+              name="minimumStock"
+              type="number"
+              step="1"
+              value={formData.minimumStock ?? ""}
               onChange={handleChange}
             />
 
