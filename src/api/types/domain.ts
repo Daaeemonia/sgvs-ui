@@ -60,6 +60,13 @@ export interface TimeSeriesDataPoint {
   receivables: number;
 }
 
+export interface LowStockProduct {
+  id: number;
+  name: string;
+  currentStock: number;
+  minimumStock: number;
+}
+
 export interface DashboardResponse {
   grossRevenue: MetricCardData;
   netProfit: MetricCardData;
@@ -69,6 +76,7 @@ export interface DashboardResponse {
   salesByPaymentMethod: ChartDataPoint[];
   topSellingProducts: ChartDataPoint[];
   revenueAndProfitTrend: TimeSeriesDataPoint[];
+  lowStockProducts?: LowStockProduct[];
 }
 
 // --- Settings Domain ---
