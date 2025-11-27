@@ -1,5 +1,6 @@
 import apiClient from "../../lib/apiClient";
 import type { Page, ProductRequest, ProductResponse } from "../types/domain";
+import type { LowStockProduct } from "../types/domain";
 
 export interface GetProductsParams {
     name?: string;
@@ -7,17 +8,6 @@ export interface GetProductsParams {
     orderBy?: string;
     page?: number;
     size?: number;
-}
-
-/**
- * Parâmetros para a busca e filtragem de produtos.
- */
-export interface GetProductsParams {
-  name?: string;
-  categoryId?: number;
-  orderBy?: string;
-  page?: number;
-  size?: number;
 }
 
 /**
@@ -69,6 +59,17 @@ export const copyProduct = async (id: number): Promise<ProductResponse> => {
   return response.data;
 };
 
+/**
+ * Busca produtos com estoque baixo
+ */
+export const getLowStockProducts = async (): Promise<LowStockProduct[]> => {
+  const response = await apiClient.get<LowStockProduct[]>('/products/low-stock');
+  return response.data;
+};
+
+/**
+ * Busca sugestões de produtos
+ */
 export const getProductSuggestions = async (): Promise<ProductResponse[]> => {
     const response = await apiClient.get<ProductResponse[]>('/products/suggestions');
     return response.data;
